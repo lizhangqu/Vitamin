@@ -21,8 +21,22 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile "junit:junit:${global_junitVersion}"
+    testCompile("org.robolectric:robolectric:3.3.2")
+    testCompile("log4j:log4j:1.2.17")
+    testCompile("org.yaml:snakeyaml:1.18")
+    testCompile("org.ini4j:ini4j:0.5.4")
+    testCompile("com.alibaba:fastjson:1.1.59.android")
+    testCompile("com.google.code.gson:gson:2.8.0")
+    testCompile("dom4j:dom4j:1.6.1")
+    provided "com.android.support:support-annotations:${global_androidSupportVersion}"
+    compile("com.android.support:support-application:0.0.5")
     provided("org.yaml:snakeyaml:1.18")
     provided("org.ini4j:ini4j:0.5.4")
+    provided("com.alibaba:fastjson:1.1.59.android")
+    provided("com.google.code.gson:gson:2.8.0")
+    provided("dom4j:dom4j:1.6.1")
+
+
 }
 
 apply from: project.rootProject.file('gradle/common-gradle/artifact_release.gradle')

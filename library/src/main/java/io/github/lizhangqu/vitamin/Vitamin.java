@@ -87,10 +87,37 @@ public class Vitamin {
     }
 
     public ReadableConfig getReadableConfig(String name) {
-        if (configType == null) {
-            return new EmptyConfig(name);
+        if (configType != null) {
+            return getReadableConfig(this.configType, name);
         }
-        return getReadableConfig(this.configType, name);
+        ReadableConfig config = null;
+        if (name != null) {
+            if (name.endsWith(".yaml")) {
+                if (yamlEnabled) {
+                    config = new YamlConfig(name);
+                }
+            } else if (name.endsWith(".ini")) {
+                if (iniEnabled) {
+                    config = new IniConfig(name);
+                }
+            } else if (name.endsWith(".xml")) {
+                if (dom4jEnabled) {
+                    config = new XmlConfig(name);
+                }
+            } else if (name.endsWith(".json")) {
+                if (jsonEnabled) {
+                    config = new JsonConfig(name);
+                }
+            } else if (name.endsWith(".properties")) {
+                config = new PropertiesConfig(name);
+            } else {
+                config = new EmptyConfig(name);
+            }
+        }
+        if (config == null) {
+            config = new EmptyConfig(name);
+        }
+        return config;
     }
 
     public ReadableConfig getReadableConfig(InputStream inputStream) {

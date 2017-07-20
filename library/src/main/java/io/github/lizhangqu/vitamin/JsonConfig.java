@@ -85,6 +85,9 @@ class JsonConfig implements ReadableConfig {
                     copy(inputStream, output);
                 } catch (IOException e) {
                     e.printStackTrace();
+                } finally {
+                    Vitamin.getInstance().close(inputStream);
+                    Vitamin.getInstance().close(output);
                 }
                 if (fastjsonEnabled) {
                     json = JSON.parseObject(output.toByteArray(), Map.class);

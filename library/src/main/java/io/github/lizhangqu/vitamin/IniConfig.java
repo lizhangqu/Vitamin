@@ -46,6 +46,8 @@ class IniConfig implements ReadableConfig {
                     ini.load(inputStream);
                 } catch (IOException e) {
                     e.printStackTrace();
+                } finally {
+                    Vitamin.getInstance().close(inputStream);
                 }
             }
         }

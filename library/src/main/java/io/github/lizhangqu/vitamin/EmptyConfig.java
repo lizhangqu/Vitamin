@@ -17,7 +17,7 @@ class EmptyConfig implements ReadableConfig {
     }
 
     EmptyConfig(InputStream inputStream) {
-
+        Vitamin.getInstance().close(inputStream);
     }
 
     @Override

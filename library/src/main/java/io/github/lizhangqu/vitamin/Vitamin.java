@@ -7,6 +7,8 @@ import org.dom4j.Document;
 import org.ini4j.Ini;
 import org.yaml.snakeyaml.Yaml;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -211,5 +213,15 @@ public class Vitamin {
             config = new EmptyConfig(inputStream);
         }
         return config;
+    }
+
+    void close(Closeable closeable) {
+        if (closeable!=null){
+            try {
+                closeable.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

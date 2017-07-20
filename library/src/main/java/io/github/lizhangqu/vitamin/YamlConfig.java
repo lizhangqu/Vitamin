@@ -41,6 +41,7 @@ class YamlConfig implements ReadableConfig {
             if (yaml == null) {
                 Yaml y = new Yaml();
                 yaml = (Map<String, Object>) y.load(inputStream);
+                Vitamin.getInstance().close(inputStream);
             }
         }
     }

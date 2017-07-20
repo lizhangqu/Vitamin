@@ -46,6 +46,8 @@ class PropertiesConfig implements ReadableConfig {
                     properties.load(inputStream);
                 } catch (IOException e) {
                     e.printStackTrace();
+                } finally {
+                    Vitamin.getInstance().close(inputStream);
                 }
             }
         }

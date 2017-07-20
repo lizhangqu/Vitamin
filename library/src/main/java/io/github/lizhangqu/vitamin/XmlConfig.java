@@ -50,6 +50,8 @@ class XmlConfig implements ReadableConfig {
                     document = doc.getRootElement();
                 } catch (Exception e) {
 
+                } finally {
+                    Vitamin.getInstance().close(inputStream);
                 }
 
             }

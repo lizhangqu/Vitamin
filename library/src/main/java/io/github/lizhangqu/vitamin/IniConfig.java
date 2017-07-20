@@ -170,7 +170,9 @@ class IniConfig implements ReadableConfig {
     public Map<String, ?> getMap(String key, Map<String, ?> defaultValue) {
         ensureNotNull();
         if (canContinue()) {
-            return ini.get(key);
+            if (ini.containsKey(key)) {
+                return ini.get(key);
+            }
         }
         return defaultValue;
     }

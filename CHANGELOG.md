@@ -9,3 +9,7 @@ version 0.0.1
  - support properties config
  - support SharePreferences config
  
+version 0.0.2
+-------------
+
+ - fix default value bug

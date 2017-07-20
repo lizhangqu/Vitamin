@@ -68,14 +68,12 @@ public class Vitamin {
                 JSON.class.hashCode();
                 jsonEnabled = true;
             } catch (Throwable e) {
-                jsonEnabled = false;
             }
 
             try {
                 Gson.class.hashCode();
                 jsonEnabled = true;
             } catch (Throwable e) {
-                jsonEnabled = false;
             }
         }
         checked = true;

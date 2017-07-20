@@ -45,27 +45,27 @@ public class Vitamin {
         }
         synchronized (this) {
             try {
-                Ini.class.hashCode();
+                Class clazz = Ini.class;
                 iniEnabled = true;
             } catch (Throwable e) {
                 iniEnabled = false;
             }
 
             try {
-                Yaml.class.hashCode();
+                Class clazz = Yaml.class;
                 yamlEnabled = true;
             } catch (Throwable e) {
                 yamlEnabled = false;
             }
             try {
-                Document.class.hashCode();
+                Class clazz = Document.class;
                 dom4jEnabled = true;
             } catch (Throwable e) {
                 dom4jEnabled = false;
             }
 
             try {
-                JSON.class.hashCode();
+                Class clazz = JSON.class;
                 jsonEnabled = true;
             } catch (Throwable e) {
             }

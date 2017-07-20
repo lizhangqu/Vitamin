@@ -45,14 +45,14 @@ class JsonConfig implements ReadableConfig {
 
     static {
         try {
-            JSON.class.hashCode();
+            Class clazz = JSON.class;
             fastjsonEnabled = true;
         } catch (Throwable e) {
             fastjsonEnabled = false;
         }
 
         try {
-            Gson.class.hashCode();
+            Class clazz = Gson.class;
             gsonEnabled = true;
         } catch (Throwable e) {
             gsonEnabled = false;

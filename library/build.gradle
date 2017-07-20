@@ -29,12 +29,13 @@ dependencies {
     testCompile("com.google.code.gson:gson:2.8.0")
     testCompile("dom4j:dom4j:1.6.1")
     provided "com.android.support:support-annotations:${global_androidSupportVersion}"
-    compile("com.android.support:support-application:0.0.5")
     provided("org.yaml:snakeyaml:1.18")
     provided("org.ini4j:ini4j:0.5.4")
     provided("com.alibaba:fastjson:1.1.59.android")
     provided("com.google.code.gson:gson:2.8.0")
     provided("dom4j:dom4j:1.6.1")
+
+    compile("com.android.support:support-application:0.0.5")
 
 
 }

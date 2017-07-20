@@ -12,7 +12,7 @@ import com.android.support.application.ApplicationCompat;
  * @since 2017-07-18 20:17
  */
 class ContextProvider {
-    public static Context getContext() {
+    static Context getContext() {
         return ApplicationCompat.getApplicationContext();
     }
 }

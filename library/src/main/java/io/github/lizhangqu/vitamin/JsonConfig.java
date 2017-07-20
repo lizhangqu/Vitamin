@@ -59,11 +59,11 @@ class JsonConfig implements ReadableConfig {
         }
     }
 
-    public static long copy(InputStream input, OutputStream output) throws IOException {
+    private static long copy(InputStream input, OutputStream output) throws IOException {
         return copyLarge(input, output, new byte[2048]);
     }
 
-    public static long copyLarge(InputStream input, OutputStream output, byte[] buffer)
+    private static long copyLarge(InputStream input, OutputStream output, byte[] buffer)
             throws IOException {
         long count = 0;
         int n = 0;

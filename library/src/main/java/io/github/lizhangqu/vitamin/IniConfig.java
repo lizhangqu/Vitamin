@@ -93,10 +93,16 @@ class IniConfig implements ReadableConfig {
             if (key.contains(".")) {
                 int i = key.indexOf('.');
                 String sectionKey = key.substring(0, i);
-                Profile.Section section = ini.get(sectionKey);
-                if (section != null) {
-                    String realKey = key.substring(i + 1);
-                    return section.get(realKey, clazz);
+                boolean containsSectionKey = ini.containsKey(sectionKey);
+                if (containsSectionKey) {
+                    Profile.Section section = ini.get(sectionKey);
+                    if (section != null) {
+                        String realKey = key.substring(i + 1);
+                        boolean containsKey = section.containsKey(realKey);
+                        if (containsKey) {
+                            return section.get(realKey, clazz);
+                        }
+                    }
                 }
             }
         }

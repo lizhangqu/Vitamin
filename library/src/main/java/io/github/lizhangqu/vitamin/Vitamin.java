@@ -19,8 +19,6 @@ import java.io.InputStream;
  * @since 2017-07-18 17:39
  */
 public class Vitamin {
-    private static Vitamin sInstance;
-
     private boolean checked;
     private boolean iniEnabled;
     private boolean yamlEnabled;

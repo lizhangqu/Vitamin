@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
                     list = config.getList("list");
                     Log.e("TAG", "json list:" + list);
 
+                    inputStream = MainActivity.this.getAssets().open("test.properties");
+                    config = Vitamin.getInstance().getReadableConfig(ConfigType.PROPERTIES, inputStream);
+                    list = config.getList("list");
+                    Log.e("TAG", "properties list:" + list);
+
                     SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences("test", Context.MODE_PRIVATE);
                     Set<String> set = new HashSet<String>();
                     set.add("1");

@@ -1,4 +1,4 @@
-## vitamin
+## Vitamin
 
 vitamin is an universal config library in android.
 

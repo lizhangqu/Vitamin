@@ -84,9 +84,11 @@ class YamlConfig implements ReadableConfig {
     public String getString(String key, String defaultValue) {
         ensureNotNull();
         if (canContinue()) {
-            Object o = yaml.get(key);
-            if (o != null) {
-                return o.toString();
+            if (yaml.containsKey(key)) {
+                Object o = yaml.get(key);
+                if (o != null) {
+                    return o.toString();
+                }
             }
         }
         return defaultValue;
@@ -157,7 +159,9 @@ class YamlConfig implements ReadableConfig {
     public List<String> getList(String key, List<String> defaultValue) {
         ensureNotNull();
         if (canContinue()) {
-            return (List<String>) yaml.get(key);
+            if (yaml.containsKey(key)) {
+                return (List<String>) yaml.get(key);
+            }
         }
         return defaultValue;
     }
@@ -171,7 +175,9 @@ class YamlConfig implements ReadableConfig {
     public Map<String, ?> getMap(String key, Map<String, ?> defaultValue) {
         ensureNotNull();
         if (canContinue()) {
-            return (Map<String, ?>) yaml.get(key);
+            if (yaml.containsKey(key)) {
+                return (Map<String, ?>) yaml.get(key);
+            }
         }
         return defaultValue;
     }
@@ -185,7 +191,9 @@ class YamlConfig implements ReadableConfig {
     public <T> T get(String key, Class<T> clazz) {
         //may not support
         try {
-            return (T) yaml.get(key);
+            if (yaml.containsKey(key)) {
+                return (T) yaml.get(key);
+            }
         } catch (Exception e) {
 
         }

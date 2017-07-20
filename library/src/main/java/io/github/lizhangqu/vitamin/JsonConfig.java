@@ -138,9 +138,11 @@ class JsonConfig implements ReadableConfig {
     public String getString(String key, String defaultValue) {
         ensureNotNull();
         if (canContinue()) {
-            Object o = json.get(key);
-            if (o != null) {
-                return o.toString();
+            if (json.containsKey(key)) {
+                Object o = json.get(key);
+                if (o != null) {
+                    return o.toString();
+                }
             }
         }
         return defaultValue;
@@ -212,13 +214,15 @@ class JsonConfig implements ReadableConfig {
     public List<String> getList(String key, List<String> defaultValue) {
         ensureNotNull();
         if (canContinue()) {
-            if (fastjsonEnabled) {
-                JSONArray jsonArray = (JSONArray) json.get(key);
-                if (jsonArray != null) {
-                    return jsonArray.toJavaObject(List.class);
+            if (json.containsKey(key)) {
+                if (fastjsonEnabled) {
+                    JSONArray jsonArray = (JSONArray) json.get(key);
+                    if (jsonArray != null) {
+                        return jsonArray.toJavaObject(List.class);
+                    }
+                } else if (gsonEnabled) {
+                    return (List<String>) json.get(key);
                 }
-            } else if (gsonEnabled) {
-                return (List<String>) json.get(key);
             }
         }
         return defaultValue;
@@ -232,13 +236,15 @@ class JsonConfig implements ReadableConfig {
     @Override
     public Map<String, ?> getMap(String key, Map<String, ?> defaultValue) {
         if (canContinue()) {
-            if (fastjsonEnabled) {
-                JSONObject jsonObject = (JSONObject) json.get(key);
-                if (jsonObject != null) {
-                    return jsonObject.toJavaObject(Map.class);
+            if (json.containsKey(key)) {
+                if (fastjsonEnabled) {
+                    JSONObject jsonObject = (JSONObject) json.get(key);
+                    if (jsonObject != null) {
+                        return jsonObject.toJavaObject(Map.class);
+                    }
+                } else if (gsonEnabled) {
+                    return (Map<String, ?>) json.get(key);
                 }
-            } else if (gsonEnabled) {
-                return (Map<String, ?>) json.get(key);
             }
         }
         return defaultValue;
@@ -252,14 +258,16 @@ class JsonConfig implements ReadableConfig {
     @Override
     public <T> T get(String key, Class<T> clazz) {
         if (canContinue()) {
-            if (fastjsonEnabled) {
-                Object o = json.get(key);
-                return TypeUtils.cast(o, clazz, ParserConfig.getGlobalInstance());
-            } else if (gsonEnabled) {
-                Gson gson = new Gson();
-                Object o = json.get(key);
-                if (o != null) {
-                    return gson.fromJson(o.toString(), clazz);
+            if (json.containsKey(key)) {
+                if (fastjsonEnabled) {
+                    Object o = json.get(key);
+                    return TypeUtils.cast(o, clazz, ParserConfig.getGlobalInstance());
+                } else if (gsonEnabled) {
+                    Gson gson = new Gson();
+                    Object o = json.get(key);
+                    if (o != null) {
+                        return gson.fromJson(o.toString(), clazz);
+                    }
                 }
             }
         }

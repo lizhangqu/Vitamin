@@ -129,11 +129,13 @@ class SharedPreferencesConfig implements ReadableConfig {
     public List<String> getList(String key, List<String> defaultValue) {
         SharedPreferences sharedPreferences = getSharedPreferences();
         if (sharedPreferences != null) {
-            Set<String> stringSet = sharedPreferences.getStringSet(key, null);
-            if (stringSet != null && stringSet.size() > 0) {
-                List<String> list = new ArrayList<>();
-                list.addAll(stringSet);
-                return list;
+            if (sharedPreferences.contains(key)) {
+                Set<String> stringSet = sharedPreferences.getStringSet(key, null);
+                if (stringSet != null && stringSet.size() > 0) {
+                    List<String> list = new ArrayList<>();
+                    list.addAll(stringSet);
+                    return list;
+                }
             }
         }
         return defaultValue;

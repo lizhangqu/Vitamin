@@ -1,0 +1,17 @@
+boolean: true
+short: 1
+int: 2
+long: 12345
+float: 1234.3
+double: 132324.23
+long: 12345
+string: "12345tgvcxzsf"
+list:
+  - 1
+  - 2
+  - 3
+  - 4
+map:
+ key1: value1
+ key2: value2
+ key3: value3

@@ -17,12 +17,28 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    dexOptions {
+        //fix for dom4j
+        additionalParameters = ['--core-library']
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    //noinspection GradleCompatible
     compile "com.android.support:appcompat-v7:${global_androidSupportVersion}"
     compile "com.android.support.constraint:constraint-layout:${global_androidConstraintLayoutVersion}"
     testCompile "junit:junit:${global_junitVersion}"
     compile project(':library')
+    compile("org.ini4j:ini4j:0.5.4")
+    compile("org.yaml:snakeyaml:1.18")
+    compile("dom4j:dom4j:1.6.1")
+//    you should add this for dom4j in android extension
+//    dexOptions {
+//        //fix for dom4j
+//        additionalParameters = ['--core-library']
+//    }
+    compile("com.alibaba:fastjson:1.1.59.android")
+    compile("com.google.code.gson:gson:2.8.0")
+
 }

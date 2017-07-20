@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * Properties配置，list使用|分割
+ * Properties配置，list使用,分割，map返回所有属性
  *
  * @author lizhangqu
  * @version V1.0
@@ -157,7 +157,7 @@ class PropertiesConfig implements ReadableConfig {
         String result = getString(key, String.valueOf(defaultValue));
         if (result != null) {
             try {
-                String[] split = result.split("|");
+                String[] split = result.split(",");
                 return Arrays.asList(split);
             } catch (Exception e) {
 
@@ -176,6 +176,7 @@ class PropertiesConfig implements ReadableConfig {
         //ignore key
         try {
             Map<String, ?> map = new HashMap<String, Object>((Map) properties);
+            return map;
         } catch (Exception e) {
 
         }

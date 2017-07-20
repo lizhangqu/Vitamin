@@ -53,20 +53,23 @@ dependencies {
  - properties
  - SharedPreferences
  
-### Set Global Config Type
+### Set Global Config Type If Needed
 
 ```
 Vitamin.getInstance().setConfigType(ConfigType configType)
 ```
+It's not must be required.
  
 ### Get ReadableConfig
 
 ```
 ReadableConfig config = Vitamin.getInstance().getReadableConfig(ConfigType configType, String filePathOrName)
 ReadableConfig config = Vitamin.getInstance().getReadableConfig(ConfigType configType, InputStream inputStream)
-ReadableConfig config = Vitamin.getInstance().getReadableConfig(String name)
+ReadableConfig config = Vitamin.getInstance().getReadableConfig(String filePathOrName)
 ReadableConfig config = Vitamin.getInstance().getReadableConfig(InputStream inputStream)
 ```
+
+If you not pass config param, it will get the global type first and then according to the extension about the file.
 
 ### Get config
 

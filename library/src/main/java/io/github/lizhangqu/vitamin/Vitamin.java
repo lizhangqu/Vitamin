@@ -112,6 +112,7 @@ public class Vitamin {
     }
 
     public ReadableConfig getReadableConfig(String name) {
+        check();
         if (configType != null) {
             return getReadableConfig(this.configType, name);
         }
@@ -146,6 +147,7 @@ public class Vitamin {
     }
 
     public ReadableConfig getReadableConfig(InputStream inputStream) {
+        check();
         if (configType != null) {
             return getReadableConfig(this.configType, inputStream);
 

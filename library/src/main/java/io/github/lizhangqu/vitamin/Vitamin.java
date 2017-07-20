@@ -164,6 +164,8 @@ public class Vitamin {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        if (config == null) {
             config = new EmptyConfig(name);
         }
         return config;
@@ -205,6 +207,9 @@ public class Vitamin {
             }
         } catch (Exception e) {
             e.printStackTrace();
+
+        }
+        if (config == null) {
             config = new EmptyConfig(inputStream);
         }
         return config;

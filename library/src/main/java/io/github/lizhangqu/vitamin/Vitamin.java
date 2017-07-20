@@ -121,10 +121,11 @@ public class Vitamin {
     }
 
     public ReadableConfig getReadableConfig(InputStream inputStream) {
-        if (configType == null) {
-            return new EmptyConfig(inputStream);
+        if (configType != null) {
+            return getReadableConfig(this.configType, inputStream);
+
         }
-        return getReadableConfig(this.configType, inputStream);
+        return new EmptyConfig(inputStream);
     }
 
     public ReadableConfig getReadableConfig(ConfigType configType, String name) {
@@ -216,7 +217,7 @@ public class Vitamin {
     }
 
     void close(Closeable closeable) {
-        if (closeable!=null){
+        if (closeable != null) {
             try {
                 closeable.close();
             } catch (IOException e) {

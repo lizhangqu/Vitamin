@@ -18,7 +18,6 @@ import org.robolectric.annotation.Config;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -103,29 +102,5 @@ public class SharePreferencesConfigTest {
         logger.debug("double:" + aDouble);
         logger.debug("string:" + string);
         logger.debug("list:" + list);
-    }
-
-    @Test
-    @Config(manifest = Config.NONE, shadows = {ContextProviderShadow.class})
-    public void testUnSupport() {
-        ReadableConfig config = Vitamin.getInstance().getReadableConfig(ConfigType.PREFERENCES, NAME);
-        Exception exception = null;
-        try {
-            Map obj = config.get("obj", Map.class);
-        } catch (UnsupportedOperationException e) {
-            exception = e;
-        }
-
-        Assert.assertNotNull(exception);
-        logger.debug(exception);
-        exception = null;
-        try {
-            Map obj = config.getMap("map");
-        } catch (UnsupportedOperationException e) {
-            exception = e;
-        }
-
-        Assert.assertNotNull(exception);
-        logger.debug(exception);
     }
 }

@@ -44,6 +44,25 @@ dependencies {
 </dependencies>
 ```
 
+### Third Party
+
+Add third party support if you need to use.
+
+```
+    compile("org.ini4j:ini4j:0.5.4")
+    compile("org.yaml:snakeyaml:1.18")
+    compile("dom4j:dom4j:1.6.1")
+//    you should add this for dom4j in android extension
+//    dexOptions {
+//        //fix for dom4j
+//        additionalParameters = ['--core-library']
+//    }
+    compile("com.alibaba:fastjson:1.1.59.android")
+    compile("com.google.code.gson:gson:2.8.0")
+```
+
+For example, if you need use ini config, you should add **compile("org.ini4j:ini4j:0.5.4")**.
+
 ### Config Type
 
  - yaml
